@@ -9,22 +9,28 @@ class Node:
         self.fn = fn
         self.gn = gn
         self.hn = hn
-
-
+class Problem:
+    def __init__(self, start, goal):
+        self.start = start
+        self.goal = goal
+        self.maxState = (4,4,2)  # fixed..
+        
 
 
 class Astar:
-    def __init__(self,missionaries,wolves):
+    def __init__(self,prob):
         self.numberGeneratedNodes=0
-        self.state = np.zeros(((missionaries,wolves,2,3)))#missionaries,wolves,boat,fn,gn,hn
-        self.opened = np.zeros(((missionaries,wolves,2)))
+        self.state = dict()
+        self.opened =  dict()
+        self.prob = prob # fixed..
+
         self.priorityQueue = queue.PriorityQueue()
         self.directions = np.array([[1,0],[0,1],[1,1],[2,0],[0,2]])
     def solution(self,start,goal):
         hn = Astar.H(start,goal)
         gn = 0
         fn= hn+gn
-        self.state[start]=fn,gn,hn
+        self.state[start]=(fn,gn,hn)
         self.priorityQueue.put((fn,start))
         while not self.priorityQueue.empty():
             #print("queue",self.priorityQueue.queue)
@@ -44,22 +50,24 @@ class Astar:
         for nextState in nextStates:
             if not (self.isOpened(nextState)):
                 fn,gn,hn=self.state[state]
+                print("iter: ",fn,gn,hn)
+                
                 gn+=1
                 hn=Astar.H(nextState,goal)
                 fn=gn+hn
                 #find better path
-                if self.state[nextState][0]>fn or self.state[nextState][0]==0:
+                if (not ( nextState in self.state )) or self.state[nextState][0]>fn:
                         self.numberGeneratedNodes+=1
                         self.state[nextState]=fn,gn,hn
                         self.priorityQueue.put((fn,nextState))
     def isOpened(self,state):
-        return True if (self.opened[state]!=0) else False
+        return True if (state in self.opened) else False
     
     def isValid(self,state):
         missionary,wolf,boat=state
-        rightMissionary=self.state.shape[0]-1-missionary
-        rightWolf = self.state.shape[1]-1-wolf
-        if not (missionary< self.state.shape[0] and wolf < self.state.shape[1] and 0<=missionary and 0<=wolf):
+        rightMissionary=self.prob.maxState[0]-1-missionary
+        rightWolf = self.prob.maxState[1]-1-wolf
+        if not (missionary< self.prob.maxState[0] and wolf < self.prob.maxState[1] and 0<=missionary and 0<=wolf ):
             return False
         elif missionary !=0 and missionary<wolf:
             return False
@@ -70,7 +78,7 @@ class Astar:
     @staticmethod
     def H(state,goal):
         m,w,b=np.array(state)-np.array(goal)
-        h=0;
+        h=0
         counts=m+w
         if counts==0:
             return 0 if not (Astar.isLeft(b)) else 1
@@ -118,8 +126,8 @@ class Astar:
                 states.append(next_state)
         return states
 
-
-astar = Astar(4,4)
+prob=Problem((3,3,1),(0,0,0))
+astar = Astar(prob)
 astar.solution((3,3,1),(0,0,0))
 path=astar.solutionPath((3,3,1),(0,0,0))
 for state in path:
