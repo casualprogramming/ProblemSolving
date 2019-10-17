@@ -1,3 +1,4 @@
+#2019710740 석예찬
 import numpy as np
 import math
 import queue
@@ -40,11 +41,14 @@ class Astar:
         self.openlist = dict() #(state,fn)
     
     def solution(self):
+        #initialize
         hn = Astar.H(prob.start,prob.goal)
         gn = 0
         fn= hn+gn
         self.states[prob.start]= Node(prob.start,Node(0,0,0,0,0),fn,gn,hn)
         self.openlist[prob.start] = fn
+        self.numberGeneratedNodes=1
+        #find solution
         while self.openlist:
             state = min(self.openlist.keys(),key=(lambda k: self.openlist[k]))
             fn = self.openlist[state]
@@ -66,9 +70,9 @@ class Astar:
                 #find better path at nextState
                 if (not ( nextState in self.states )) or self.states[nextState].fn>fn:
                         #open & update states
-                        self.numberGeneratedNodes+=1
                         self.states[nextState]=Node(nextState,self.states[state],fn,gn,hn)
                         self.openlist[nextState]=fn
+                        self.numberGeneratedNodes+=1
     def isClosed(self,state):
         return True if (state in self.closed) else False
     
