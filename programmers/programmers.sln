@@ -31,6 +31,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KAKAO2020_lyrics_search", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KAKAO2020_column_beam", "KAKAO2020_column_beam\KAKAO2020_column_beam.vcxproj", "{559389A6-1B89-48D3-AF74-0284CFE0E5E1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KAKAO2020_wall_inspection", "KAKAO2020_wall_inspection\KAKAO2020_wall_inspection.vcxproj", "{6DCB8476-290E-43B5-9C62-B1A34CF2AFB5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KAKAO2020_moving_block", "KAKAO2020_moving_block\KAKAO2020_moving_block.vcxproj", "{F06AF9DE-D88B-4411-954E-6ABCA7D07B60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -151,6 +155,22 @@ Global
 		{559389A6-1B89-48D3-AF74-0284CFE0E5E1}.Release|x64.Build.0 = Release|x64
 		{559389A6-1B89-48D3-AF74-0284CFE0E5E1}.Release|x86.ActiveCfg = Release|Win32
 		{559389A6-1B89-48D3-AF74-0284CFE0E5E1}.Release|x86.Build.0 = Release|Win32
+		{6DCB8476-290E-43B5-9C62-B1A34CF2AFB5}.Debug|x64.ActiveCfg = Debug|x64
+		{6DCB8476-290E-43B5-9C62-B1A34CF2AFB5}.Debug|x64.Build.0 = Debug|x64
+		{6DCB8476-290E-43B5-9C62-B1A34CF2AFB5}.Debug|x86.ActiveCfg = Debug|Win32
+		{6DCB8476-290E-43B5-9C62-B1A34CF2AFB5}.Debug|x86.Build.0 = Debug|Win32
+		{6DCB8476-290E-43B5-9C62-B1A34CF2AFB5}.Release|x64.ActiveCfg = Release|x64
+		{6DCB8476-290E-43B5-9C62-B1A34CF2AFB5}.Release|x64.Build.0 = Release|x64
+		{6DCB8476-290E-43B5-9C62-B1A34CF2AFB5}.Release|x86.ActiveCfg = Release|Win32
+		{6DCB8476-290E-43B5-9C62-B1A34CF2AFB5}.Release|x86.Build.0 = Release|Win32
+		{F06AF9DE-D88B-4411-954E-6ABCA7D07B60}.Debug|x64.ActiveCfg = Debug|x64
+		{F06AF9DE-D88B-4411-954E-6ABCA7D07B60}.Debug|x64.Build.0 = Debug|x64
+		{F06AF9DE-D88B-4411-954E-6ABCA7D07B60}.Debug|x86.ActiveCfg = Debug|Win32
+		{F06AF9DE-D88B-4411-954E-6ABCA7D07B60}.Debug|x86.Build.0 = Debug|Win32
+		{F06AF9DE-D88B-4411-954E-6ABCA7D07B60}.Release|x64.ActiveCfg = Release|x64
+		{F06AF9DE-D88B-4411-954E-6ABCA7D07B60}.Release|x64.Build.0 = Release|x64
+		{F06AF9DE-D88B-4411-954E-6ABCA7D07B60}.Release|x86.ActiveCfg = Release|Win32
+		{F06AF9DE-D88B-4411-954E-6ABCA7D07B60}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
