@@ -34,7 +34,7 @@ vector<int> solution(vector<string> words, vector<string> queries) {
 	}
 	for (auto const& query : queries)
 	{
-		int s = query.size()-1;
+		int s = int(query.size()-1);
 		int count = isUseReverse(query) ? rtrie[s].query(string(query.rbegin(), query.rend())) : trie[s].query(query);
 		answer.emplace_back(count);
 		printf("count:%d\n", count);
@@ -42,13 +42,13 @@ vector<int> solution(vector<string> words, vector<string> queries) {
 	}
 	return answer;
 }
-vector<int> solution2(vector<string> words, vector<string> queries);
+vector<int> solution(vector<string> words, vector<string> queries);
 
 int main()
 {
 	vector<string> words = { "frodo", "front", "frost", "frozen", "frame", "kakao" };
 	vector<string> queries = { "fro??", "????o", "fr???", "fro???", "pro?" };
-	solution2(words, queries);
+	solution(words, queries);
 
 	return 0;
 }
