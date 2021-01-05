@@ -2,41 +2,66 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
-using namespace std;
+#include <limits.h>
 
-//TODO : not completed
+//@@Make sure to check long long type
+
+using namespace std;
+enum { LESS, EQUAL, GREATER };
+long long getCompactTime(long long t, vector<int> const& times, long long n)
+{
+	long long remainTimes = LLONG_MAX;
+	for (auto time : times)
+	{
+		remainTimes = min(remainTimes, t % time);
+	}
+	return t - remainTimes;
+}
+
+long long getState(long long t, vector<int> const& times, long long n)
+{
+	long long processed = 0;
+	for (auto time : times)
+	{
+		processed += t / time;
+	}
+	if (processed > n)
+		return GREATER;
+	else if (processed == n)
+		return EQUAL;
+	else
+		return LESS;
+}
+
 long long solution(int n, vector<int> times) {
 	long long answer = 0;
 	sort(times.begin(), times.end());
-	long long l=0, r= n * times[0];
-	cout << "t:" << r-l << endl;
-
-	while (r - l!=1)
+	long long l = 0, r = n * times.front();
+	while (r - l != 1)
 	{
-		int processed = 0;
-		long long t = (r - l) / 2+l;
+		long long processed = 0;
+		long long t = (r - l) / 2 + l;
 
-		for (auto time : times)
-		{
-			processed += t / time;
-		}
-		cout << "t:" << t << "l:" << l << "r:" << r << "p:" << processed << endl;
-
-		if (processed > n)
+		auto type = getState(t, times, n);
+		if (type == GREATER)
 		{
 			r = t;
 		}
-		else
+		else if (type == LESS)
+		{
 			l = t;
+		}
+		else//EQUAL
+		{
+			answer = getCompactTime(t, times, n);
+			break;
+		}
 	}
-	int count = 0;
-	for (auto time : times)
-	{
-		count += r / time;
-	}
-	cout << "count"<<count<<endl;
-	return r;
+	if (answer == 0)
+		answer = r;
+	return answer;
 }
+
 void main()
 {
 	cout << solution(6, {7,10}) << endl;
