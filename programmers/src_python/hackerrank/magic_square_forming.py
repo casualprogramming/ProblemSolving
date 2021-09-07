@@ -1,6 +1,6 @@
 from itertools import permutations, combinations, product, combinations_with_replacement
 import sys       
-def IsMagicSqure(data):
+def IsMagicSqure(data: list):
     for x in range(3):
         sum = 0
         for y in range(3):
@@ -19,9 +19,8 @@ def IsMagicSqure(data):
         return False    
     else:
         return True
-
-def GetCost(data, array):
-    cost = 0;
+def GetCost(data: list, array: list):
+    cost = 0
     for x in range(3):
         for y in range(3):
             cost+=abs(data[x*3+y]-array[x][y])

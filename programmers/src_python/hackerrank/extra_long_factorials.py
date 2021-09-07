@@ -10,9 +10,6 @@ import sys
 # The function accepts INTEGER n as parameter.
 #
 
-#2,147,483,647 (10 digit)
-
-
 max_int_len=len(str(sys.maxsize))
 chunk_len = 0
 

@@ -30,23 +30,23 @@ void dfs(int x, int y, vector<vector<int>> const& picture, vector<vector<bool>> 
     out_ConnectCount++;
 
     //right
-    if (IsConnect(x, y, x, y + 1, picture))
-        dfs(x,y+1, picture,visited, out_ConnectCount);
+    if (IsConnect(x, y, x+1, y, picture))
+        dfs(x+1,y, picture,visited, out_ConnectCount);
 
     //down
-    if (IsConnect(x, y, x + 1, y, picture))
-        dfs(x+1, y, picture, visited, out_ConnectCount);
+    if (IsConnect(x, y, x, y+1, picture))
+        dfs(x, y+1, picture, visited, out_ConnectCount);
 
     //left
-    if (IsConnect(x, y, x, y + 1, picture))
-        dfs(x, y + 1, picture, visited, out_ConnectCount);
+    if (IsConnect(x, y, x-1, y, picture))
+        dfs(x-1, y, picture, visited, out_ConnectCount);
 
     //up
-    if (IsConnect(x, y, x, y + 1, picture))
-        dfs(x, y + 1, picture, visited, out_ConnectCount);
+    if (IsConnect(x, y, x, y-1, picture))
+        dfs(x, y-1, picture, visited, out_ConnectCount);
 }
 
-// Àü¿ª º¯¼ö¸¦ Á¤ÀÇÇÒ °æ¿ì ÇÔ¼ö ³»¿¡ ÃÊ±âÈ­ ÄÚµå¸¦ ²À ÀÛ¼ºÇØÁÖ¼¼¿ä.
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ ï¿½Úµå¸¦ ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.
 vector<int> solution(int m, int n, vector<vector<int>> picture) {
     int number_of_area = 0;
     int max_size_of_one_area = 0;
