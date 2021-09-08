@@ -5,19 +5,11 @@ from collections import defaultdict, deque, OrderedDict
 from enum import Enum
 from pprint import pprint
 from bisect import bisect_left, bisect_right
-from functools import cmp_to_key
+from functools import cmp_to_key, reduce
 import itertools 
-
-def compare(a, b):
-    if a+b<b+a:
-        return 1
-    else:
-        return -1
-from functools import reduce
 
 ID=0
 PLAYS=1
-
 
 def solution(genres, plays):
     answer = []
@@ -39,8 +31,6 @@ def solution(genres, plays):
             answer.append(id)
 
     return answer
-
-
 
 print(solution(["classic", "pop", "classic", "classic", "pop"], [500, 600, 150, 800, 2500]))
 

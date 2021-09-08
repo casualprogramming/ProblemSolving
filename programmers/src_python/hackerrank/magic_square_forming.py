@@ -15,7 +15,7 @@ def IsMagicSqure(data: list):
             return False
     if (data[0]+data[4]+data[8]) !=15:
         return False
-    elif (data[0]+data[4]+data[8]) !=15:
+    elif (data[2]+data[4]+data[6]) !=15:
         return False    
     else:
         return True

@@ -22,6 +22,8 @@ print(data)
 
 from itertools import permutations, combinations, product, combinations_with_replacement
 
+from functools import cmp_to_key, reduce
+
 data = ['A', 'B', 'C'] # 데이터 준비
 result = list(permutations(data, 3)) # 모든 순열 구하기
 print(result)
@@ -41,7 +43,7 @@ from bisect import bisect_left, bisect_right
 nums = [4, 5, 5, 5, 5, 5, 5, 5, 5]
 n = 5 
 print(nums[bisect_left(nums, n)]) 
-print(nums[bisect_right(nums, n)])
+print(nums[bisect_right(nums, n)-1])
 
 
 def IsMagicSqure(data):
@@ -64,45 +66,14 @@ def IsMagicSqure(data):
     else:
         return True
         
-        
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9] #
-permutation = list(permutations(numbers, 9)) #
-def IsMagicSqure(data):
-    for x in range(3):
-        sum = 0
-        for y in range(3):
-            sum += data[x*3+y]
-        if sum!=15:
-            return False
-    for y in range(3):
-        sum = 0
-        for x in range(3):
-            sum += data[x*3+y]
-        if sum!=15:
-            return False
-    if (data[0]+data[4]+data[8]) !=15:
-        return False
-    elif (data[0]+data[4]+data[8]) !=15:
-        return False    
-    else:
-        return True
 
-def GetCost(permutation, array):
-    cost = 0;
-    for x in range(3):
-        for y in range(3):
-            cost+=abs(permutation[x*3+y]-array[x][y])
-    return cost    
-import sys       
-def formingMagicSquare(s):
-    # Write your code here
-    data = [1, 2, 3, 4, 5, 6, 7, 8, 9] #
-    permutation = list(permutations(data, 9)) #
-    minimalCost = sys.maxsize
-    for data in permutation:
-        if IsMagicSqure(data):
-            minimalCost = min(minimalCost, GetCost(data,s))
-    return minimalCost
 
-s = [[5, 3, 4], [1, 5, 8], [6, 4, 2]]
-print(formingMagicSquare(s))    
+
+s = "07:05:45PM"
+print(s.replace("PM", "AM"))
+
+val = "77".rjust(5, "0")
+print(val)
+
+val = "77".ljust(5, "0")
+print(val)
