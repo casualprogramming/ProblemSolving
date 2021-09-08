@@ -36,6 +36,14 @@ print(result)
 result = list(combinations_with_replacement(data, 2)) # 2개를 뽑는 모든 조합 구하기(중복 허용)
 print(result)
 
+from bisect import bisect_left, bisect_right
+
+nums = [4, 5, 5, 5, 5, 5, 5, 5, 5]
+n = 5 
+print(nums[bisect_left(nums, n)]) 
+print(nums[bisect_right(nums, n)])
+
+
 def IsMagicSqure(data):
     for x in range(3):
         sum = 0
