@@ -9,7 +9,7 @@ from bisect import bisect_left, bisect_right
 def solution(citations):
     answer = 0
     citations.sort()
-    Min = citations[0]
+    Min = 0
     Max = citations[len(citations)-1]
     for h in range(Min, Max+1):
         h_more_papers = len(citations) - bisect_left(citations, h)
