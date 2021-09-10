@@ -59,7 +59,30 @@ def solution2(n, results):
         if len(winners[Self]) + len(losers[Self]) == n-1:
             answer+=1
     return answer
-    
+
+def solution3(n, results):
+    winners = defaultdict(set)
+    losers = defaultdict(set)
+    answer=0
+    for result in results:
+        winners[result[0]-1].add(result[1]-1)
+        losers[result[1]-1].add(result[0]-1)
+
+    #floyd
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                if k in winners[i] and j in winners[k]:
+                    winners[i].add(j)
+                if k in losers[i] and j in losers[k]:
+                    losers[i].add(j)
+        #now Sn is updated to Sn+1: include n -> (k) -> n path, try Sn+2 include  n -> k+1 -> n path
+
+    for Self in range(n):
+        if len(winners[Self]) + len(losers[Self]) == n-1:
+            answer+=1
+    return answer
+
 
 
 
@@ -67,3 +90,4 @@ def solution2(n, results):
 
 print(solution(5, [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]))
 print(solution2(5, [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]))
+print(solution3(5, [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]))

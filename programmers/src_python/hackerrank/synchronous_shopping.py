@@ -5,8 +5,9 @@ from typing import DefaultDict
 from pprint import pprint
 from queue import PriorityQueue
 
-#adjacent node의 edge길이를 기준으로 Dijkstra 하면 안됨
-#state의 cost가 작은거 부터 먼저 
+#[worng] Dijkstra: adjacent node length (timeout)
+#[better] Dijkstra: select node cost cost[node][fish_state]
+#그래도 시간초과난다 14번부터..... (미해결) c++ set으로 queue를 compact하게 바꿔보자 https://www.youtube.com/watch?v=610JNkzxIEI&ab_channel=HackerRankSolution
 
 #https://www.hackerrank.com/challenges/synchronous-shopping/problem
 def dij(initial_vertex,costs,    fishes,edges):
