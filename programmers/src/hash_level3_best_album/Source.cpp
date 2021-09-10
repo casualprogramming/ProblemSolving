@@ -15,7 +15,6 @@ struct Comparator {
 vector<int> solution(vector<string> genres, vector<int> plays)
 {
 	vector<int> answer;
-	auto comp = [](const int& a, const int& b) { return a<b; };
 	unordered_map<string, multimap<int, int, Comparator>> BestAlbum;
 	unordered_set<string> GenreTypes;
 	for (int i=0;i<genres.size();i++)

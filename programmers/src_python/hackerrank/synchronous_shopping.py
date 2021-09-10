@@ -4,16 +4,19 @@ import sys
 from typing import DefaultDict       
 from pprint import pprint
 from queue import PriorityQueue
+import heapq
 
 #[worng] Dijkstra: adjacent node length (timeout)
 #[better] Dijkstra: select node cost cost[node][fish_state]
-#그래도 시간초과난다 14번부터..... (미해결) c++ set으로 queue를 compact하게 바꿔보자 https://www.youtube.com/watch?v=610JNkzxIEI&ab_channel=HackerRankSolution
+#그래도 시간초과난다 14번부터..... (미해결) c++ set으로 node를 compact하게 바꿔보자 https://www.youtube.com/watch?v=610JNkzxIEI&ab_channel=HackerRankSolution
+#state 마다 visited 체크 해도 시간초과.. c++써야할듯?
 
 #https://www.hackerrank.com/challenges/synchronous-shopping/problem
 def dij(initial_vertex,costs,    fishes,edges):
     pqueue = PriorityQueue()
     costs[initial_vertex][fishes[initial_vertex]]=0
     pqueue.put((0, initial_vertex,fishes[initial_vertex]))
+    
     while pqueue.empty()!=True:
         state_cost,u,u_state = pqueue.get()
         for (edge_cost, v) in edges[u]:
@@ -22,6 +25,7 @@ def dij(initial_vertex,costs,    fishes,edges):
             if v_next_cost < costs[v][v_next_state]:
                 costs[v][v_next_state] = v_next_cost
                 pqueue.put((v_next_cost,v,v_next_state))
+                
         
 def shop(n, k, centers, roads):
     # Write your code here

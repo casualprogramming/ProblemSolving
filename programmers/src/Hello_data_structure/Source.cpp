@@ -18,13 +18,14 @@ std::pair<T, U> operator+(const std::pair<T, U>& l, const std::pair<T, U>& r) { 
 template <typename T, typename U>
 std::pair<T, U> operator-(const std::pair<T, U>& l, const std::pair<T, U>& r) { return { l.first - r.first,l.second - r.second }; }
 
+string to_string(string const& str) { return str; }
+
 template<typename T1, typename T2>
 string to_string(pair<T1, T2> const& pair)
 {
 	return "(" + to_string(pair.first) + "," + to_string(pair.second) + ")";
 }
 
-string const& to_string(string const& str) { return str; }
 template<class T>
 void Print(T const& data)
 {
@@ -109,11 +110,25 @@ void TestVector()
 	vector<vector<bool>> beams(n + 3, vector<bool>(n + 3, false));//initialize with false 
 }
 
+void TestAlgorithm()
+{
+	cout << "\n\n******************** algorithm ***************\n\n";
+	vector<pair<int, string>> data = { {1,"a"},{1,"c"},{2,"b"},{4,"d"},{3,"e"},{3,"f"} };
+	int k = data.size() / 2;
+	//quick select
+	for (int k = 0; k < data.size(); k++)
+	{
+		nth_element(data.begin(), data.begin() + k, data.end(), [](pair<int, string> const& a, pair<int, string>const& b) {return a.first < b.first; });
+		Print(data[k]);
+	}
+}
+
 int main()
 {
 	TestString();
 	TestPair();
 	TestMapAndSet();
 	TestQueue();
+	TestAlgorithm();
 	return 0;
 }
