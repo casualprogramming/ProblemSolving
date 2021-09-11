@@ -56,7 +56,8 @@ def dfs(begin, graph:dict, route:list):
         if FIND == True:
             return
         route.pop()
-        graph[begin].append(order,departure)# worng: order is changed, c++ multiset or using index and swap
+        graph[begin].insert(order,departure)
+        #graph[begin].append(departure)# worng: order is changed, c++ multiset or using index and swap
 
 def solution(tickets):
     answer = []
