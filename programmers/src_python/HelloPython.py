@@ -127,7 +127,10 @@ print("\n**************** reduce, map ****************\n")
 #--reduce, map
 data = [[16,"Alice"],[16,"Dave"],[16,"Bob"]]
 print(reduce(lambda x, y:x+y,list(map(lambda x : x[0], data))))
+print("filter (Alice):", list(filter(lambda x: ("a" in x[1] or "A" in x[1]), data)))
 
+mapping = list(map(lambda x: (x,1),  filter(lambda x: ("a" in x[1] or "A" in x[1]), data)))
+print(mapping)
 
 #**************** string ****************
 print("\n**************** string ****************\n")

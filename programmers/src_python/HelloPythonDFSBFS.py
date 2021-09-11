@@ -83,3 +83,18 @@ stack_dfs_post("3",graph,visited,func)
 visited = set()
 stack_dfs_post("4",graph,visited)
 
+#dfs for level
+def level_dfs(numbers, target):
+    goal =0
+    stack = [(numbers[0],0),(-numbers[0],0)]
+    while stack:
+        n, level = stack.pop()#n:number,level
+        if level == len(numbers)-1:
+            if n==target:
+                goal+=1
+            continue
+        else:
+            stack.append((n + numbers[level+1]*1,level+1))
+            stack.append((n + numbers[level+1]*-1,level+1))
+    return goal
+
