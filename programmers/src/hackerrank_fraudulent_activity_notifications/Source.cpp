@@ -57,18 +57,6 @@ inline int my_nth_element(vector<int>& data, int k)
 const int expense_size = 201;
 array<int, expense_size> expense_count;//[??][count]
 
-int find_expense(int begin_expense)
-{
-    if (begin_expense< expense_count.size() && expense_count[begin_expense] >= 2)
-        return begin_expense;
-    for (int e = begin_expense+1; e < expense_count.size(); e++)
-    {
-        if (expense_count[e] >= 1)
-            return e;
-    }
-    return -1;
-}
-
 //k=0~
 int find_nth_expense(int k)
 {
@@ -98,9 +86,8 @@ int activityNotifications(vector<int> expenditure, int d)
         if (d % 2 == 0)
         {
             int median = 0;
-            int nth_expesne = find_nth_expense(k-1);
-            median += nth_expesne;
-            median += find_expense(nth_expesne);
+            median += find_nth_expense(k-1);
+            median += find_nth_expense(k);
             if(expenditure[day]>=median)
                 alert++;
         }
