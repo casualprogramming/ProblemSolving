@@ -3,7 +3,8 @@ from collections import deque,defaultdict
 import sys       
 #https://programmers.co.kr/learn/courses/30/lessons/12952
 #solution1: check the queen can be placed when place queen
-#solution2: Update position (can not be placed) to the array when place queen
+#solution2: Update position (where queen can not be placed) to the array when place queen
+
 def boundary_check(board,c,r):
     if r>=0 and c>=0 and r<len(board[0]) and c<len(board):
         return True
@@ -11,6 +12,8 @@ def boundary_check(board,c,r):
         return False
 
 #solution1
+#TODO: Do not compare with board, compare with placed queen
+#this algorithm timeout at programmers test11, 
 def CanPlaced(board,c,r):
     #check coloum
     for col in range(len(board)):
@@ -43,7 +46,7 @@ solution_set = list()
 def dfs(board, row, queen_set):
     global solution_set, queen_count
     if len(queen_set) == len(board):
-        solution_set.add(tuple(queen_set))
+        solution_set.append(tuple(queen_set))
         return 
     for c in range(len(board)):
         if CanPlaced(board,c,row):

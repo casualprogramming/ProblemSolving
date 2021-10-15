@@ -11,12 +11,12 @@ def pre_bfs(vertex, graph, visited, OnVisited=lambda x:x):
     queue.append(   vertex)
     while queue:
         v = queue.popleft()
-        for other in graph[v]:
-            if other not in visited:
+        for adjacent in graph[v]:
+            if adjacent not in visited:
                 #visite and append
-                visited.add(    other)
-                OnVisited(      other)
-                queue.append(   other)
+                visited.add(    adjacent)
+                OnVisited(      adjacent)
+                queue.append(   adjacent)
 #post-check
 def bfs(index, graph, visited, OnVisited=lambda x:x):
     queue = deque()
@@ -40,12 +40,12 @@ def stack_dfs(vertex, graph, visited, OnVisited=lambda x:x):
 
     while stack:
         v = stack.pop()
-        for other in graph[v]:
-            if other not in visited:
+        for adjacent in graph[v]:
+            if adjacent not in visited:
                 #visite and append
-                visited.add(    other)
-                OnVisited(      other)
-                stack.append(   other)
+                visited.add(    adjacent)
+                OnVisited(      adjacent)
+                stack.append(   adjacent)
 
 #post-check: visiting when pop()
 def stack_dfs_post(index, graph, visited, OnVisited=lambda x:x):
